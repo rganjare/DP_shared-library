@@ -11,11 +11,25 @@ def call() {
 pipeline {
    agent any
 
+  environment{
+    SONAR=credentials('SONAR')
+   } 
+
    stages{
        stage ("Lint Check"){
            steps {
                script{
                  lintChecks()
+               }
+           }  
+       }
+
+       stage ("Lint Check"){
+           steps {
+               script{
+                  sh 'mvn clean compile'
+                  env.ARGS="-Dsonar.java.binaries=target/"
+                  common.sonarCheck()
                }
            }  
        }

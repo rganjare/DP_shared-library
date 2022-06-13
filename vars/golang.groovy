@@ -10,6 +10,10 @@ def call() {
 pipeline {
    agent any
 
+  environment{
+    SONAR=credentials('SONAR')
+     } 
+
    stages{
        stage ("Lint Check"){
            steps {
@@ -22,6 +26,7 @@ pipeline {
        stage ("sonarCheck"){
            steps {
                script{
+                env.ARGS="-Dsonar.java.binaries=."
                  common.sonarCheck()
                }
            }  

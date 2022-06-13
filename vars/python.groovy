@@ -14,7 +14,7 @@ pipeline {
 
    environment{
     SONAR=credentials('SONAR')
-   } 
+    } 
    
    stages{
        stage ("Lint Check"){
@@ -28,6 +28,7 @@ pipeline {
        stage ("sonarCheck"){
            steps {
                script{
+                 env.ARGS="-Dsonar.sources=."
                  common.sonarCheck()
                }
            }  

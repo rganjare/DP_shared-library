@@ -25,6 +25,7 @@ pipeline {
        stage ("sonarCheck"){
            steps {
                script{
+                 env.ARGS="-Dsonar.sources=."
                  common.sonarCheck()
                }
            }  
