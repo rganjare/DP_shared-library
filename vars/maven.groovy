@@ -24,7 +24,7 @@ pipeline {
            }  
        }
 
-       stage ("Lint Check"){
+       stage ("sonarCheck"){
            steps {
                script{
                   sh 'mvn clean compile'
