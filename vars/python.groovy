@@ -12,6 +12,10 @@ def call() {
 pipeline {
    agent any
 
+   environment{
+    SONAR=credentials('SONAR')
+   } 
+   
    stages{
        stage ("Lint Check"){
            steps {
