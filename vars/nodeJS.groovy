@@ -10,8 +10,9 @@ def sonarCheck() {
       sh '''
           sonar-scanner -Dsonar.host.url=http://172.31.15.120:9000 
           -Dsonar.projectKey=${COMPONENT} 
-          -Dsonar.login=${SONAR_USR} 
-          -Dsonar.password=${SONAR_PSW}
+          -Dsonar.login="1763f3ab53b016a018862f4b5d92159ddeb4a60c" 
+         # -Dsonar.login=${SONAR_USR} 
+         # -Dsonar.password=${SONAR_PSW}
       '''
     }    
 
