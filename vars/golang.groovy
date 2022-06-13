@@ -18,6 +18,15 @@ pipeline {
                }
            }  
        }
+
+       stage ("sonarCheck"){
+           steps {
+               script{
+                 common.sonarCheck()
+               }
+           }  
+       }
+
    }
 }
 }
