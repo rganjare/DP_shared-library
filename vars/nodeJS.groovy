@@ -75,7 +75,7 @@ pipeline {
          } 
           steps{
             sh '''
-            curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONANT}-${TAG_NAME}.zip http://3.236.19.102:8081/repository/${COMPONANT}/${COMPONANT}-${TAG_NAME}.zip
+            curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONANT}-${TAG_NAME}.zip http://172.31.8.251:8081/repository/${COMPONANT}/${COMPONANT}-${TAG_NAME}.zip
             '''
           }
         }
