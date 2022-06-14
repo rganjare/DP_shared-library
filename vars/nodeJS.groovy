@@ -14,6 +14,7 @@ pipeline {
     SONAR=credentials('SONAR')
    } 
    stages{
+
        stage ("Lint Check"){
            steps {
                script{
@@ -28,8 +29,46 @@ pipeline {
                  env.ARGS="-Dsonar.sources=."
                  common.sonarCheck()
                }
-           }  
-       }
-   }
-}
+              }  
+           }
+
+      stage ("Test Cases"){
+
+          parallel {
+
+            stage("Unit Test"){
+              steps{
+                sh 'echo unit Test'
+              }
+            } 
+
+            stage("Integration Test"){
+              steps{
+                sh 'echo Integration Test'
+              }
+            }
+
+            stage("Functional Test"){
+              steps{
+                sh 'echo Functional Test'
+              }
+            }
+          }
+        }
+      
+      stage("Prepare Artifacts"){
+              steps{
+                sh 'echo Prepare Artifacts'
+              }
+            }
+
+      stage("Upload Artifacts"){
+              steps{
+                sh 'echo Upload Artifacts'
+              }
+            }
+
+            
+    } 
+  }
 }
