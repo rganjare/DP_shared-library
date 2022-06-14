@@ -58,7 +58,7 @@ pipeline {
       
       stage("Prepare Artifacts"){
          when {
-          expression {env.TAG_NAME != null}
+          expression { env.TAG_NAME != null }
          } 
           steps{
             sh 'echo Prepare Artifacts'
@@ -67,7 +67,7 @@ pipeline {
 
       stage("Upload Artifacts"){
           when {
-          expression {env.TAG_NAME != null}
+          expression { env.TAG_NAME != null }
          } 
           steps{
             sh 'echo Upload Artifacts'
