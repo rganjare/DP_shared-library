@@ -12,6 +12,7 @@ pipeline {
     
    environment{
     SONAR=credentials('SONAR')
+    NEXUS=credentials('NEXUS')
    } 
    stages{
 
@@ -61,7 +62,10 @@ pipeline {
           expression { env.TAG_NAME != null }
          } 
           steps{
-            sh 'echo Prepare Artifacts'
+            sh '''
+            npm install
+            zip -r ${COMPONANT}-${TAG_NAME}.zip node_modules server.js
+              '''
           }
         }
 
@@ -70,7 +74,9 @@ pipeline {
           expression { env.TAG_NAME != null }
          } 
           steps{
-            sh 'echo Upload Artifacts'
+            sh '''
+            curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONANT}-${TAG_NAME}.zip http://3.236.19.102:8081/repository/${COMPONANT}/${COMPONANT}-${TAG_NAME}.zip
+            '''
           }
         }
 
