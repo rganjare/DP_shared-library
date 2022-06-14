@@ -59,16 +59,22 @@ pipeline {
         }
       
       stage("Prepare Artifacts"){
-              steps{
-                sh 'echo Prepare Artifacts'
-              }
-            }
+         when {
+          expression {env.TAG_NAME != null}
+         } 
+          steps{
+            sh 'echo Prepare Artifacts'
+          }
+        }
 
       stage("Upload Artifacts"){
-              steps{
-                sh 'echo Upload Artifacts'
-              }
-            } 
+          when {
+          expression {env.TAG_NAME != null}
+         } 
+          steps{
+            sh 'echo Upload Artifacts'
+          }
+        }
        
    }
 }
