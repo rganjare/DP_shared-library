@@ -64,7 +64,7 @@ pipeline {
           steps{
             sh '''
             npm install
-            zip -r ${COMPONANT}-${TAG_NAME}.zip node_modules server.js
+            zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
               '''
           }
         }
@@ -75,7 +75,7 @@ pipeline {
          } 
           steps{
             sh '''
-            curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONANT}-${TAG_NAME}.zip http://172.31.8.251:8081/repository/${COMPONANT}/${COMPONANT}-${TAG_NAME}.zip
+            curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.8.251:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
             '''
           }
         }
