@@ -80,7 +80,7 @@ def artifacts() {
   }
 
   stage("Prepare Artifacts") {
-      if (env.APP_TYPE == "NodeJS") {
+      if (env.APP_TYPE == "NodeJS111") {
         sh '''
           npm install 
           zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js 
@@ -102,8 +102,7 @@ def artifacts() {
           go build
           zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
         '''
-      }
-      else if (env.APP_TYPE == "Nginx" ){
+      } else if (env.APP_TYPE == "Nginx" ) {
         sh '''
           cd static 
           zip -r ../${COMPONENT}-${TAG_NAME}.zip * 
