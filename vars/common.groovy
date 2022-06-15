@@ -39,8 +39,15 @@ def lintChecks() {
             #~/node_modules/jslint/bin/jslint.js server.js
             echo Link Check for ${COMPONENT}
           '''
-      }    
-    }
+      }
+      else if (env.APP_TYPE == "Nginx" ){
+      sh '''
+        # We commented this because devs gonna check the failures.
+        #~/node_modules/jslint/bin/jslint.js server.js
+        echo Link Check for ${COMPONENT}
+      '''
+    }    
+  }
 }
 
 def testCases() {
