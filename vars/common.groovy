@@ -80,7 +80,7 @@ def artifacts() {
   }
 
   stage("Prepare Artifacts") {
-      if (env.APP_TYPE == "NodeJS1") {
+      if (env.APP_TYPE == "NodeJS111") {
         sh '''
           npm install 
           zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js 
