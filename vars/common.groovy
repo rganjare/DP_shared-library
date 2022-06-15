@@ -90,11 +90,10 @@ def artifacts() {
         '''
       } else if (env.APP_TYPE == "GoLang") {
         sh '''
-          echo Prepare Artifacts !!
-          // go mod init ${COMPONENT}
-          // go get 
-          // go build
-          // zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
+          go mod init ${COMPONENT}
+          go get 
+          go build
+          zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
         '''
       }
       // else if (env.APP_TYPE == "nginx" ){
