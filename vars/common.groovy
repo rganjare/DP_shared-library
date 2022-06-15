@@ -82,7 +82,7 @@ def artifacts() {
         sh '''
         echo Prepare Artifacts !!
          mvn clean package 
-         mv target/${COMPONENT}-${TAG_NAME}.jar ${COMPONENT}.jar 
+         mv target/shipping-1.0.jar ${COMPONENT}.jar 
          zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar 
         '''
       } else if (env.APP_TYPE == "Python") {
