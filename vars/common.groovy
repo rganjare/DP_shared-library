@@ -16,35 +16,35 @@ def lintChecks() {
         sh '''
           # We commented this because devs gonna check the failures.
           #~/node_modules/jslint/bin/jslint.js server.js
-          echo Link Check for ${COMPONENT}
+          echo Lint Check for ${COMPONENT}
         '''
       } 
       else if (env.APP_TYPE == "Maven"){
           sh '''
             # We commented this because devs gonna check the failures.
             #mvn checkstyle:check
-            echo Link Check for ${COMPONENT}
+            echo Lint Check for ${COMPONENT}
           '''
       }
       else if (env.APP_TYPE == "Python"){
           sh '''
             # We commented this because devs gonna check the failures.
             #pylint *.py
-            echo Link Check for ${COMPONENT}
+            echo Lint Check for ${COMPONENT}
           '''
       }
       else if (env.APP_TYPE == "GoLang"){
           sh '''
             # We commented this because devs gonna check the failures.
             #~/node_modules/jslint/bin/jslint.js server.js
-            echo Link Check for ${COMPONENT}
+            echo Lint Check for ${COMPONENT}
           '''
       }
       else if (env.APP_TYPE == "Nginx" ){
       sh '''
         # We commented this because devs gonna check the failures.
         #~/node_modules/jslint/bin/jslint.js server.js
-        echo Link Check for ${COMPONENT}
+        echo Lint Check for ${COMPONENT}
       '''
     }    
   }
