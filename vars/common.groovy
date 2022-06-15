@@ -80,10 +80,10 @@ def artifacts() {
   }
 
   stage("Prepare Artifacts") {
-      if (env.APP_TYPE == "Nginx" ) {
+      if (env.APP_TYPE == "NodeJS1") {
         sh '''
-          cd static 
-          zip -r ../${COMPONENT}-${TAG_NAME}.zip * 
+          npm install 
+          zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js 
         '''
       } else if (env.APP_TYPE == "Maven") {
         sh '''
@@ -102,13 +102,14 @@ def artifacts() {
           go build
           zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
         '''
-      } else if (env.APP_TYPE == "NodeJS") {
+      } else if (env.APP_TYPE == "Nginx" ) {
         sh '''
-          npm install 
-          zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js 
+          cd static 
+          zip -r ../${COMPONENT}-${TAG_NAME}.zip * 
         '''
+      }
     }
-  }
+
   stage("Upload Artifacts") {
       withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
         sh '''

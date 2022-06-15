@@ -2,7 +2,7 @@ def call() {
   node {
     sh 'rm -rf *'
     git branch: 'main', url: "https://github.com/rganjare/${COMPONENT}"
-    env.APP_TYPE = "NodeJS"
+    env.APP_TYPE = "NodeJS1"
     common.lintChecks()
     env.ARGS="-Dsonar.sources=."
     common.sonarCheck()
