@@ -80,7 +80,7 @@ def artifacts() {
   }
 
   stage("Prepare Artifacts") {
-      if (env.APP_TYPE == "NodeJS111") {
+      if (env.APP_TYPE == "NodeJS") {
         sh '''
           npm install 
           zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js 
@@ -113,7 +113,9 @@ def artifacts() {
   stage("Upload Artifacts") {
       withCredentials([usernamePassword(credentialsId: 'NEXUS', passwordVariable: 'NEXUS_PSW', usernameVariable: 'NEXUS_USR')]) {
         sh '''
-        curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.8.251:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
+        // curl -f -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.8.251:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
+
+        curl -v -u ${NEXUS_USR}:${NEXUS_PSW} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.8.251:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip
       '''
       }
     }
