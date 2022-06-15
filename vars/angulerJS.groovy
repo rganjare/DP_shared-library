@@ -2,9 +2,9 @@ def call() {
   node {
     sh 'rm -rf *'
     git branch: 'main', url: "https://github.com/rganjare/${COMPONENT}"
-    env.APP_TYPE = "GoLang"
+    env.APP_TYPE = "Nginx"
     common.lintChecks()
-    env.ARGS="-Dsonar.java.binaries=."
+    env.ARGS="-Dsonar.sources=."
     common.sonarCheck()
     common.testCases()
 

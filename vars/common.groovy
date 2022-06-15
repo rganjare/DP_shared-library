@@ -96,12 +96,12 @@ def artifacts() {
           zip -r ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}
         '''
       }
-      // else if (env.APP_TYPE == "nginx" ){
-      //   sh '''
-      //     cd static 
-      //     zip -r ../${COMPONENT}-${TAG_NAME}.zip * 
-      //   '''
-      // }
+      else if (env.APP_TYPE == "Nginx" ){
+        sh '''
+          cd static 
+          zip -r ../${COMPONENT}-${TAG_NAME}.zip * 
+        '''
+      }
     }
 
   stage("Upload Artifacts") {
