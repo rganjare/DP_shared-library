@@ -12,28 +12,28 @@ def sonarCheck() {
 
 def lintChecks() {
     stage("lintChecks"){
-      if(env.APP_TYPE="NodeJS"){
+      if(env.APP_TYPE == "NodeJS"){
         sh '''
           # We commented this because devs gonna check the failures.
           #~/node_modules/jslint/bin/jslint.js server.js
           echo Link Check for ${COMPONENT}
         '''
       } 
-      else if (env.APP_TYPE="Maven"){
+      else if (env.APP_TYPE == "Maven"){
           sh '''
             # We commented this because devs gonna check the failures.
             #mvn checkstyle:check
             echo Link Check for ${COMPONENT}
           '''
       }
-      else if (env.APP_TYPE="Python"){
+      else if (env.APP_TYPE == "Python"){
           sh '''
             # We commented this because devs gonna check the failures.
             #pylint *.py
             echo Link Check for ${COMPONENT}
           '''
       }
-      else if (env.APP_TYPE="GoLang"){
+      else if (env.APP_TYPE == "GoLang"){
           sh '''
             # We commented this because devs gonna check the failures.
             #~/node_modules/jslint/bin/jslint.js server.js
