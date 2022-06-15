@@ -57,9 +57,20 @@ pipeline {
           }
         }
       
+      stage("Check The Release"){
+          steps{
+            script{
+              env.UPLOAD_STATUS = sh(returnStdout: true, script: 'curl -L -s http://172.31.8.251:8081/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-${TAG_NAME}.zip || true')
+
+              print UPLOAD_STATUS 
+            }
+          }
+        }
+
       stage("Prepare Artifacts"){
          when {
           expression { env.TAG_NAME != null }
+          expression { env.UPLOAD_STATUS == "" }
          } 
           steps{
             sh '''
@@ -72,6 +83,7 @@ pipeline {
       stage("Upload Artifacts"){
           when {
           expression { env.TAG_NAME != null }
+          expression { env.UPLOAD_STATUS == "" }
          } 
           steps{
             sh '''
