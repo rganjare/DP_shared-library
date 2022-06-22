@@ -15,7 +15,7 @@ def call() {
     ansiColor('xterm') {
       sh 'rm -rf *'
       git branch: 'main', url: "https://github.com/rganjare/${REPONAME}"
-      sh 'll'
+      sh 'ls -ltr'
       stage('Terrafile INIT') {
         sh '''
           # cd ${TERRAFORM_DIR}
