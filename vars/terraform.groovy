@@ -18,21 +18,21 @@ def call() {
 
       stage('Terrafile INIT') {
         sh '''
-          cd ${TERRAFORM_DIR}
+          // cd ${TERRAFORM_DIR}
           terrafile -f env-${ENV}/Terrafile
         '''
       }
 
       stage('Terraform INIT') {
         sh '''
-          cd ${TERRAFORM_DIR}
+          // cd ${TERRAFORM_DIR}
           terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars
         '''
       }
 
       stage('Terraform Plan') {
         sh '''
-          cd ${TERRAFORM_DIR}
+          // cd ${TERRAFORM_DIR}
           // export TF_VAR_APP_VERSION=${APP_VERSION}
           terraform plan -var-file=env-${ENV}/${ENV}.tfvars 
         '''
