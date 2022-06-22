@@ -15,33 +15,33 @@ def call() {
     ansiColor('xterm') {
       sh 'rm -rf *'
       git branch: 'main', url: "https://github.com/rganjare/${REPONAME}"
-
+      sh 'll'
       stage('Terrafile INIT') {
         sh '''
-          // cd ${TERRAFORM_DIR}
+          # cd ${TERRAFORM_DIR}
           terrafile -f env-${ENV}/Terrafile
         '''
       }
 
       stage('Terraform INIT') {
         sh '''
-          // cd ${TERRAFORM_DIR}
+         # cd ${TERRAFORM_DIR}
           terraform init -backend-config=env-${ENV}/${ENV}-backend.tfvars
         '''
       }
 
       stage('Terraform Plan') {
         sh '''
-          // cd ${TERRAFORM_DIR}
-          // export TF_VAR_APP_VERSION=${APP_VERSION}
+          # cd ${TERRAFORM_DIR}
+          # export TF_VAR_APP_VERSION=${APP_VERSION}
           terraform plan -var-file=env-${ENV}/${ENV}.tfvars 
         '''
       }
 
       stage('Terraform Apply') {
         sh '''
-          cd ${TERRAFORM_DIR}
-          // export TF_VAR_APP_VERSION=${APP_VERSION}
+         # cd ${TERRAFORM_DIR}
+         # export TF_VAR_APP_VERSION=${APP_VERSION}
           terraform apply -var-file=env-${ENV}/${ENV}.tfvars -auto-approve -parallelism 1
         '''
       }
