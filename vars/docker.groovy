@@ -4,11 +4,7 @@ def call() {
     git branch: 'main', url: "https://github.com/rganjare/${COMPONENT}"
     
     stage("Docker Build"){
-      sh '''
-          pwd
-          $USER 
-          docker build . 
-        '''
+      sh 'docker build . '
     }
   }
 }
