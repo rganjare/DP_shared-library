@@ -7,7 +7,8 @@ def call() {
       sh '''
           pwd
           $USER 
-          docker build .'''
+          docker build . 
+        '''
     }
   }
 }
