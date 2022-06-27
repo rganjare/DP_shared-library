@@ -10,8 +10,8 @@ def call() {
           docker login --username rganjaredocker --password Rahul#143
           docker push rganjaredocker/${dockerCOMPONENT}:latest
         """
-    }
-   else {
+        }
+    } else {
       stage('Docker Build') {
         sh """
           sudo docker build -t rganjaredocker/${dockerCOMPONENT}:${TAG_NAME} .
