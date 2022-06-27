@@ -6,7 +6,7 @@ def call() {
     stage("Docker Build"){
       sh "sudo docker build -t 549008638695.dkr.ecr.us-east-1.amazonaws.com/${dockerCOMPONENT}:latest ."
       // Creating image for Docker hub
-      sh "sudo docker build -t rganjaredocker/${dockerCOMPONENT}:${TAG_NAME} ."
+      sh "sudo docker build -t rganjaredocker/${dockerCOMPONENT}:${env.TAG_NAME} ."
     }
 
     if (env.TAG_NAME != null) {
