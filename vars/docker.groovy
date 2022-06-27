@@ -16,7 +16,7 @@ def call() {
          # docker push 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
           
          # docker tag 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest rganjaredocker/${COMPONENT}:${TAG_NAME}
-          docker login --username rganjaredocker --password Rahul#143"
+          docker login --username rganjaredocker --password Rahul#143
           docker push rganjaredocker/frontend:${TAG_NAME}
         """
       }
