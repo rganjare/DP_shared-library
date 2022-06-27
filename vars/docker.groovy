@@ -3,9 +3,9 @@ def call() {
     sh 'rm -rf *'
     git branch: 'main', url: "https://github.com/rganjare/${COMPONENT}"
     
-    stage("Docker Build"){
-      sh "sudo docker build -t 549008638695.dkr.ecr.us-east-1.amazonaws.com/${dockerCOMPONENT}:latest ."
-    }
+    // stage("Docker Build"){
+    //   sh "sudo docker build -t 549008638695.dkr.ecr.us-east-1.amazonaws.com/${dockerCOMPONENT}:latest ."
+    // }
 
     if (env.TAG_NAME != null) {
       stage('Docker Build') {
