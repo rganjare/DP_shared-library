@@ -10,9 +10,9 @@ def call() {
     if (env.TAG_NAME != null) {
       stage('Docker Build') {
         sh """
-          docker tag 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
-          (Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 549008638695.dkr.ecr.us-east-1.amazonaws.com
-          docker push 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
+         # docker tag 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
+         # (Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 549008638695.dkr.ecr.us-east-1.amazonaws.com
+         # docker push 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
           
           docker tag 549008638695.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:latest rganjaredocker/${COMPONENT}:${TAG_NAME}
           docker login --username rganjaredocker --password Rahul#143"
